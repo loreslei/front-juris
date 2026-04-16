@@ -7,7 +7,7 @@ const Intro = () => {
         <h1 className="text-3xl text-center font-semibold">
           Agendar Audiência Pré-Processual Online
         </h1>
-        <Link className="text-lg px-8 py-2 bg-slate-400 rounded-xl" to={"/process/new"}>
+        <Link className="text-lg px-8 py-2 bg-slate-400 rounded-xl" to={"/processual/new"}>
           Agendar
         </Link>
       </div>
