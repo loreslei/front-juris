@@ -10,6 +10,9 @@ const Intro = () => {
         <Link className="text-lg px-8 py-2 bg-slate-400 rounded-xl" to={"/processual/new"}>
           Agendar
         </Link>
+        <Link className="text-lg px-8 py-2 bg-slate-400 rounded-xl" to={"/components"}>
+          Página de Componentes
+        </Link>
       </div>
     </div>
   );
