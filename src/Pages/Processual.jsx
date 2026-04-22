@@ -1,49 +1,80 @@
-import FirstStep from '@/components/FirstStep';
-import React, { useState } from 'react';
+import FirstStep from "@/components/Steps/FirstStep/FirstStep";
+import SecondStepManager from "@/components/Steps/SecondStep/SecondStepManager";
+import React, { useState } from "react";
 
 export default function Processual() {
   const [passoAtual, setPassoAtual] = useState(1);
 
   const passos = [
-    'Ação Sem Advogado',
-    'Reclamante(s)',
-    'Reclamado(s)',
-    'Relato',
-    'Anexos',
-    'Declaração',
+    "Ação Sem Advogado",
+    "Reclamante(s)",
+    "Reclamado(s)",
+    "Relato",
+    "Anexos",
+    "Declaração",
   ];
+
+  const isLastStep = passoAtual === passos.length;
+  const textoBotao = isLastStep ? "Concluir" : "Próximo";
 
   const avancarPasso = () => {
     if (passoAtual < passos.length) setPassoAtual(passoAtual + 1);
   };
 
+  const recuarPasso = () => {
+    if (passoAtual > 1) setPassoAtual(passoAtual - 1);
+  };
+
+  const renderStepContent = () => {
+    switch (passoAtual) {
+      case 1:
+        return <FirstStep />;
+      case 2:
+        return <SecondStepManager />;
+      // Adicione os outros aqui:
+      // case 3: return <ThirdStep />;
+      default:
+        return (
+          <div className="p-4 text-center">Conteúdo em desenvolvimento...</div>
+        );
+    }
+  };
+
   return (
     <div className="max-w-5/6 mx-auto px-12 py-8 m-5 rounded-xl bg-slate-100 text-gray-700 font-sans">
       <p className="mb-8 text-sm">
-        Preencha os dados abaixo e clique no botão Confirmar. Os campos marcados com * são obrigatórios.
+        Preencha os dados abaixo e clique no botão Confirmar. Os campos marcados
+        com * são obrigatórios.
       </p>
 
       {/* Stepper (Barra de Progresso) */}
       <div className="flex justify-between items-center mb-8 relative">
         {/* Linha de fundo do stepper */}
         <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 transform -translate-y-1/2"></div>
-        
+
         {passos.map((nomePasso, index) => {
           const numeroPasso = index + 1;
           const ativo = passoAtual === numeroPasso;
           const concluido = passoAtual > numeroPasso;
 
           return (
-            <div key={index} className="flex flex-col items-center bg-slate-100 px-2">
-              <div 
+            <div
+              key={index}
+              className="flex flex-col items-center bg-slate-100 px-2"
+            >
+              <div
                 className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-4 
-                ${ativo || concluido 
-                  ? 'border-teal-500 bg-teal-500 text-white' 
-                  : 'border-gray-200 bg-white text-gray-400'}`}
+                ${
+                  ativo || concluido
+                    ? "border-teal-500 bg-teal-500 text-white"
+                    : "border-gray-200 bg-white text-gray-400"
+                }`}
               >
                 {numeroPasso}
               </div>
-              <span className={`mt-2 text-sm ${ativo ? 'text-teal-600 font-medium' : 'text-gray-400'}`}>
+              <span
+                className={`mt-2 text-sm ${ativo ? "text-teal-600 font-medium" : "text-gray-400"}`}
+              >
                 {nomePasso}
               </span>
             </div>
@@ -59,20 +90,35 @@ export default function Processual() {
         </div>
 
         {/* Corpo da Seção */}
-        <div className="max-w-5xl p-8">
-          {passoAtual === 1 && <FirstStep />}
-          {passoAtual === 2 && <div>Formulário de Reclamante em construção...</div>}
-          {/* Adicione os outros passos aqui */}
-        </div>
+        <div className="max-w-7xl p-8">{renderStepContent()}</div>
       </div>
 
       {/* Rodapé com Botões */}
-      <div className="flex justify-end mt-6">
+      <div className="flex justify-between mt-6">
+        <button
+          onClick={recuarPasso}
+          disabled={passoAtual === 1}
+          className={`py-2 px-8 rounded font-medium transition-all
+            ${
+              passoAtual === 1
+                ? "bg-teal-500/40 text-white/60 cursor-not-allowed opacity-50"
+                : "bg-teal-500 text-white hover:bg-teal-600 cursor-pointer"
+            }`}
+        >
+          Voltar
+        </button>
+
         <button
           onClick={avancarPasso}
-          className="bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-8 rounded transition-colors"
+          disabled={passoAtual === passos.length}
+          className={`py-2 px-8 rounded font-medium transition-all
+            ${
+              passoAtual === passos.length
+                ? "bg-teal-500/40 text-white/60 cursor-not-allowed opacity-50"
+                : "bg-teal-500 text-white hover:bg-teal-600 cursor-pointer"
+            }`}
         >
-          Próximo
+          {textoBotao}
         </button>
       </div>
     </div>

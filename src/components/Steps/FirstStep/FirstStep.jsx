@@ -1,7 +1,7 @@
 import React from "react";
-import SearchInput from "./ui/SeachInput";
-import Input from "./ui/Input";
-import Dropdown from "./ui/Dropdown";
+import SearchInput from "../../ui/SeachInput";
+import Input from "../../ui/Input";
+import Dropdown from "../../ui/Dropdown";
 
 const FirstStep = () => {
   return (
@@ -54,7 +54,10 @@ const FirstStep = () => {
 
       <p>
         Quer saber qual é o <strong>Juizado Especial mais próximo?</strong>{" "}
-        <a href="https://sbje.tjce.jus.br/sbje-web/pages/localiza_juizado.jsf" className="text-blue-500 hover:underline">
+        <a
+          href="https://sbje.tjce.jus.br/sbje-web/pages/localiza_juizado.jsf"
+          className="text-blue-500 hover:underline"
+        >
           Clique aqui.
         </a>
       </p>
@@ -66,7 +69,6 @@ const FirstStep = () => {
         </label>
 
         <Dropdown />
-
       </div>
     </div>
   );

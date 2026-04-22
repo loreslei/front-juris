@@ -15,7 +15,7 @@ export default function Dropdown() {
   };
 
   return (
-    <div className='space-y-2 w-full'>
+    <div className='space-y-2 max-w-3xl'>
       
       <div 
         onClick={toggleDropdown} 
