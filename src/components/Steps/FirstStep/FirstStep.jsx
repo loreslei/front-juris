@@ -64,11 +64,7 @@ const FirstStep = () => {
 
       {/* Input de Seleção da Unidade */}
       <div className="mt-8">
-        <label className="block font-bold text-gray-800 mb-2">
-          * Unidade Judicial
-        </label>
-
-        <Dropdown />
+        <Dropdown dropdown_text='uma Unidade Judicial'/>
       </div>
     </div>
   );
