@@ -3,7 +3,7 @@ import Dropdown from "../../ui/Dropdown";
 
 const FirstStep = () => {
   return (
-    <div className="space-y-6 text-sm">
+    <div className="space-y-6 text-sm  text-justify">
       <h2 className="text-lg font-bold text-gray-800">
         Antes de começar, leia com atenção
       </h2>

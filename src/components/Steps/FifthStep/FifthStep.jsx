@@ -5,7 +5,7 @@ import React from 'react'
 export default function FifthStep() {
     const passos = ['Conversas, e-mails, prints de tela', 'Notas fiscais, contratos, boletos', 'Fotos ou comprovantes']
   return (
-    <div className='flex flex-col gap-5'>
+    <div className='flex flex-col gap-5  text-justify'>
         <ul className="text-sm list-disc pl-10">
           <li>Você pode anexar até 5 arquivos</li>
           <li>Formatos aceitos: PDF, JPG, JPEG, PNG</li>

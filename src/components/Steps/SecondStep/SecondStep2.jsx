@@ -10,7 +10,7 @@ export default function SecondStep2({onSave}) {
   const section = "flex m-auto w-full flex-col gap-5";
 
   return (
-    <div className="flex m-auto w-full flex-col gap-10">
+    <div className="flex m-auto w-full flex-col gap-10 text-justify">
       <section className={section}>
         <div className={header}>Adicionar Reclamante</div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
@@ -50,7 +50,7 @@ export default function SecondStep2({onSave}) {
       <section className={section}>
         <div className={header}>Informações Adicionais</div>
         <div className="flex gap-2 items-center">
-          <TriangleAlert className="ml-1 inline text-yellow-600" size={18} />
+          <TriangleAlert className="hidden ml-1 text-yellow-600 md:inline md:size-7.5 xl:size-5" />
           <p className="inline text-sm">
             Vamos nos comunicar com você por Whatsapp! Tenha atenção às
             mensagens. O TJCE pode enviar intimações por WhatsApp ou ligar pra
