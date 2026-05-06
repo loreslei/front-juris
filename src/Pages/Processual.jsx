@@ -35,15 +35,14 @@ export default function Processual() {
         return <FirstStep />;
       case 2:
         return <SecondStepManager />;
-      // Adicione os outros aqui:
       case 3: 
-      return <ThirdStepManager />;
+        return <ThirdStepManager />;
       case 4: 
-      return <FourthStep />;
+        return <FourthStep />;
       case 5:
-      return <FifthStep />;
+        return <FifthStep />;
       case 6:
-      return <SixthStep />;
+        return <SixthStep />;
     }
   };
 
