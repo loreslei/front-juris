@@ -1,17 +1,17 @@
 import React from 'react'
 
-export default function SecondStep1({onNext}) {
+export default function ThirdStep1({onNext}) {
   return (
     <div className='space-y-5'>
       <h1 className='text-lg font-semibold'>
-        Quem está fazendo o pedido?
+        Contra quem você está pedindo?
       </h1>
 
       <p className='text-sm'>
-        Nesta etapa, você vai informar seus próprios dados.
+        Nesta etapa, você vai informar os dados da pessoa ou da empresa reclamada.
       </p>
 
-      <p className='text-sm'>*A pessoa que faz o pedido é chamada de <p className='font-semibold inline'>Reclamante</p>, ou seja, quem entra com a ação.</p>
+      <p className='text-sm'>*A pessoa ou a empresa contra quem o pedido é feito é chamada de <p className='font-semibold inline'>Reclamada</p>, ou seja, quem responde à ação.</p>
 
       <button 
       onClick={onNext}

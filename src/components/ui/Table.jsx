@@ -23,7 +23,7 @@ export default function Table() {
                 {actual_text.map((name)=>{
                     return <td class="py-3 px-4 text-center">{name}</td>
                 })}
-                <td class="py-3 px-4 flex justify-center">  
+                <td class="py-3 px-4 flex justify-center items-center">  
                     <a href="#" class="font-medium transition-all 1s text-rose-600 hover:text-rose-800"><Trash2 size={20} /></a>
                 </td>
             </tr>

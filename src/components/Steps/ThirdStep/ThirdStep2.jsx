@@ -5,14 +5,14 @@ import { Save, TriangleAlert } from "lucide-react";
 import React from "react";
 import SelectPicture from "@/components/ui/SelectPicture";
 
-export default function SecondStep2({onSave}) {
+export default function ThirdStep2({onSave}) {
   const header = "p-2.5 bg-teal-500 text-white font-semibold w-full rounded-lg";
   const section = "flex m-auto w-full flex-col gap-5";
 
   return (
     <div className="flex m-auto w-full flex-col gap-10">
       <section className={section}>
-        <div className={header}>Adicionar Reclamante</div>
+        <div className={header}>Adicionar Reclamado</div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
           <Input input_text="nome completo" />
           <Input input_text="CPF/CNPJ" />
@@ -20,7 +20,7 @@ export default function SecondStep2({onSave}) {
       </section>
 
       <section className={section}>
-        <div className={header}>Endereço do(a) Reclamante</div>
+        <div className={header}>Endereço do(a) Reclamado</div>
         <p className="text-sm">
           O endereço é requisito do sistema PJE para o cadastro do processo. Se
           atente para que o endereço indicado esteja correto, porque os dados
@@ -58,48 +58,16 @@ export default function SecondStep2({onSave}) {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
-          <Input
+          <Input optional
             input_text="telefone"
             label_text="Número de telefone para contato"
           />
-          <Input input_text="e-mail" />
+          <Input optional input_text="e-mail" />
         </div>
-        <p className="font-semibold text-sm">
-          * Você tem algum direito de prioridade para que seu pedido seja
-          analisado mais rápido?
-        </p>
-        <p className="text-xs">
-          (Ex.: pessoas com mais de 60 anos, doenças graves, pessoas com
-          deficiência)
-        </p>
-        <Radio />
       </section>
 
-      <section className={section}>
-        <div className={header}>Documentos Pessoais</div>
+    
 
-        <ul className="text-sm list-disc pl-10">
-          <li>O documento deve ter foto e CPF visíveis</li>
-          <li>Anexe até 2 arquivos</li>
-          <li>Formatos aceitos: PDF, JPG, JPEG, PNG</li>
-          <li>Tamanho máximo: 10 MB por arquivo</li>
-        </ul>
-
-        <SelectPicture />
-      </section>
-
-      <section className={section}>
-        <div className={header}>Comprovante de Endereço</div>
-
-        <ul className="text-sm list-disc pl-10">
-          <li>É importante que o comprovante esteja no seu nome, e seja recente (até 3 meses)</li>
-          <li>Anexe até 2 arquivos</li>
-          <li>Formatos aceitos: PDF, JPG, JPEG, PNG</li>
-          <li>Tamanho máximo: 10 MB por arquivo</li>
-        </ul>
-
-        <SelectPicture />
-      </section>
 
       <button 
       onClick={onSave}

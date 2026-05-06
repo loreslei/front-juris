@@ -1,5 +1,9 @@
+import FifthStep from "@/components/Steps/FifthStep/FifthStep";
 import FirstStep from "@/components/Steps/FirstStep/FirstStep";
+import FourthStep from "@/components/Steps/FourthStep/FourthStep";
 import SecondStepManager from "@/components/Steps/SecondStep/SecondStepManager";
+import SixthStep from "@/components/Steps/SixthStep/SixthStep";
+import ThirdStepManager from "@/components/Steps/ThirdStep/ThirdStepManager";
 import React, { useState } from "react";
 
 export default function Processual() {
@@ -32,11 +36,14 @@ export default function Processual() {
       case 2:
         return <SecondStepManager />;
       // Adicione os outros aqui:
-      // case 3: return <ThirdStep />;
-      default:
-        return (
-          <div className="p-4 text-center">Conteúdo em desenvolvimento...</div>
-        );
+      case 3: 
+      return <ThirdStepManager />;
+      case 4: 
+      return <FourthStep />;
+      case 5:
+      return <FifthStep />;
+      case 6:
+      return <SixthStep />;
     }
   };
 
