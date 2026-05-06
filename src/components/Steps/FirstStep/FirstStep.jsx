@@ -1,6 +1,4 @@
 import React from "react";
-import SearchInput from "../../ui/SeachInput";
-import Input from "../../ui/Input";
 import Dropdown from "../../ui/Dropdown";
 
 const FirstStep = () => {
@@ -62,8 +60,7 @@ const FirstStep = () => {
         </a>
       </p>
 
-      {/* Input de Seleção da Unidade */}
-      <div className="mt-8">
+      <div className="mt-8 max-w-3xl">
         <Dropdown dropdown_text='uma Unidade Judicial'/>
       </div>
     </div>

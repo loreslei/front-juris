@@ -2,9 +2,9 @@ import comarcas from '@/utils/data';
 import { ChevronDown } from 'lucide-react'
 import React, { useState } from 'react'
 
-export default function Dropdown(props) {
+export default function Dropdown({ className, dropdown_text, label_text }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isChanged, setIsChanged] = useState(`Selecione ${props.dropdown_text}`)
+  const [isChanged, setIsChanged] = useState(`Selecione ${dropdown_text}`)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -17,9 +17,9 @@ export default function Dropdown(props) {
   return (
 
     
-    <div className='flex flex-col gap-2 max-w-3xl'>
+    <div className={`flex flex-col gap-2 w-full ${className}`}>
 
-      <label className="capitalize text-sm font-semibold">{props.label_text?  `* ${props.label_text}` : `* ${props.dropdown_text.slice(3)}`}</label>
+      <label className="capitalize text-sm font-semibold">{label_text?  `* ${label_text}` : `* ${dropdown_text.slice(3)}`}</label>
       
       <div 
         onClick={toggleDropdown} 

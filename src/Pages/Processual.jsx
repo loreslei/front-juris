@@ -41,7 +41,7 @@ export default function Processual() {
   };
 
   return (
-    <div className="max-w-5/6 mx-auto px-12 py-8 m-5 rounded-xl bg-slate-100 text-gray-700 font-sans">
+    <div className="max-w-90/100 lg:max-w-5/6 mx-auto px-12 py-8 m-5 rounded-xl bg-slate-100 text-gray-700 font-sans">
       <p className="mb-8 text-sm">
         Preencha os dados abaixo e clique no botão Confirmar. Os campos marcados
         com * são obrigatórios.
@@ -83,14 +83,14 @@ export default function Processual() {
       </div>
 
       {/* Container do Conteúdo Dinâmico */}
-      <div className="bg-gray-50 border border-gray-100 rounded-lg shadow-sm">
+      <div className="bg-gray-50 w-[120%] -ml-[10%] md:ml-0 md:w-full border border-gray-100 rounded-lg shadow-sm">
         {/* Cabeçalho da Seção */}
         <div className="bg-teal-500 text-white p-3 font-semibold rounded-t-lg">
           {passos[passoAtual - 1]}
         </div>
 
         {/* Corpo da Seção */}
-        <div className="max-w-7xl p-8">{renderStepContent()}</div>
+        <div className="w-full md:max-w-7xl p-8">{renderStepContent()}</div>
       </div>
 
       {/* Rodapé com Botões */}
