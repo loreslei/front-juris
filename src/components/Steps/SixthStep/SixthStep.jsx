@@ -1,5 +1,6 @@
 import Radio from "@/components/ui/Radio";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function SixthStep() {
 
@@ -32,8 +33,11 @@ export default function SixthStep() {
           Os atendimentos deste canal são registrados e tratados com
           confidencialidade, em conformidade com a Lei Geral de Proteção de
           Dados (LGPD). Nossa política de privacidade está disponível para
-          consulta através do link abaixo:
-          https://vercel.juris.com.br/politica-de-privacidade/ 
+          consulta através do link abaixo: 
+          <br />
+          <Link className="text-blue-600 transition-all 1s hover:underline hover:text-blue-800" to='/politica-de-privacidade'>
+          https://front-juris.vercel.app/politica-de-privacidade
+          </Link>
         </p>
         <p className="text-sm">Ao clicar no
           botão abaixo, você declara estar ciente e de acordo com os termos
