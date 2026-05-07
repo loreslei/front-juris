@@ -4,9 +4,11 @@ import FourthStep from "@/components/Steps/FourthStep/FourthStep";
 import SecondStepManager from "@/components/Steps/SecondStep/SecondStepManager";
 import SixthStep from "@/components/Steps/SixthStep/SixthStep";
 import ThirdStepManager from "@/components/Steps/ThirdStep/ThirdStepManager";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 
 export default function Processual() {
+  const [mobileStepView, setMobileStepView] = useState(1);
   const [passoAtual, setPassoAtual] = useState(1);
 
   const passos = [
@@ -22,11 +24,21 @@ export default function Processual() {
   const textoBotao = isLastStep ? "Concluir" : "Próximo";
 
   const avancarPasso = () => {
-    if (passoAtual < passos.length) setPassoAtual(passoAtual + 1);
-  };
+  if (passoAtual < passos.length) {
+    const novoPasso = passoAtual + 1;
+
+    setPassoAtual(novoPasso);
+    setMobileStepView(novoPasso);
+  }
+};
 
   const recuarPasso = () => {
-    if (passoAtual > 1) setPassoAtual(passoAtual - 1);
+    if (passoAtual > 1) {
+      const novoPasso = passoAtual - 1;
+
+      setPassoAtual(novoPasso);
+      setMobileStepView(novoPasso);
+    }
   };
 
   const renderStepContent = () => {
@@ -35,9 +47,9 @@ export default function Processual() {
         return <FirstStep />;
       case 2:
         return <SecondStepManager />;
-      case 3: 
+      case 3:
         return <ThirdStepManager />;
-      case 4: 
+      case 4:
         return <FourthStep />;
       case 5:
         return <FifthStep />;
@@ -53,10 +65,82 @@ export default function Processual() {
         com * são obrigatórios.
       </p>
 
-      {/* Stepper (Barra de Progresso) */}
-      <div className="flex justify-between items-center mb-8 relative">
-        {/* Linha de fundo do stepper */}
-        <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 transform -translate-y-1/2"></div>
+
+      {/* MOBILE */}
+      <div className="flex md:hidden items-center justify-center gap-4 mb-8">
+        <button
+          onClick={() => {
+            if (mobileStepView > 1) {
+              setMobileStepView(mobileStepView - 1);
+            }
+          }}
+          className="cursor-pointer"
+        >
+          <ChevronLeft
+            className={`size-6 transition-all ${
+              mobileStepView === 1 ? "text-gray-300" : "text-teal-500"
+            }`}
+          />
+        </button>
+
+        <div className="flex flex-col items-center min-w-45">
+          <div
+            className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-4 transition-all
+      ${
+        passoAtual === mobileStepView
+          ? "border-teal-500 bg-teal-500 text-white opacity-100"
+          : passoAtual > mobileStepView
+            ? "border-teal-500 bg-teal-500 text-white opacity-50"
+            : "border-gray-200 bg-white text-gray-400 opacity-100"
+      }`}
+          >
+            {mobileStepView}
+          </div>
+
+          <span
+            className={`mt-2 text-sm text-center transition-all
+      ${
+        passoAtual === mobileStepView
+          ? "text-teal-600 font-semibold opacity-100"
+          : passoAtual > mobileStepView
+            ? "text-teal-500 opacity-50"
+            : "text-gray-400 opacity-100"
+      }`}
+          >
+            {passos[mobileStepView - 1]}
+          </span>
+        </div>
+
+        <button
+          onClick={() => {
+            if (mobileStepView < passos.length) {
+              setMobileStepView(mobileStepView + 1);
+            }
+          }}
+          className="cursor-pointer"
+        >
+          <ChevronRight
+            className={`size-6 transition-all ${
+              mobileStepView === passos.length
+                ? "text-gray-300"
+                : "text-teal-500"
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* TABLET/DESKTOP */}
+      <div className="hidden md:flex justify-between items-center mb-8 relative">
+        {/* Linha cinza de fundo */}
+        <div className="absolute top-6 left-0 w-full h-1 bg-gray-200 -z-20"></div>
+
+        {/* Linha teal de progresso */}
+        <div
+          className="absolute top-6 left-0 h-1 bg-teal-500 -z-10 transition-all duration-300"
+          style={{
+            width: `${((passoAtual - 1) / (passos.length - 1)) * 100}%`,
+          }}
+        ></div>
 
         {passos.map((nomePasso, index) => {
           const numeroPasso = index + 1;
@@ -66,20 +150,29 @@ export default function Processual() {
           return (
             <div
               key={index}
-              className="flex flex-col items-center bg-slate-100 px-2"
+              className="flex flex-col items-center bg-slate-100 px-2 z-10"
             >
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-4 
-                ${
-                  ativo || concluido
-                    ? "border-teal-500 bg-teal-500 text-white"
-                    : "border-gray-200 bg-white text-gray-400"
-                }`}
-              >
-                {numeroPasso}
-              </div>
+  className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-4 transition-all
+  ${
+    ativo
+      ? "border-teal-500 bg-teal-500 text-white opacity-100"
+      : concluido
+      ? "border-teal-500 bg-teal-500 text-white opacity-50"
+      : "border-gray-200 bg-white text-gray-400 opacity-100"
+  }`}
+>
+  {numeroPasso}
+</div>
+
               <span
-                className={`mt-2 text-sm ${ativo ? "text-teal-600 font-medium" : "text-gray-400"}`}
+                className={`mt-2 text-sm text-center transition-all ${
+                  ativo
+                    ? "text-teal-600 font-semibold opacity-100"
+                    : concluido
+                      ? "text-teal-500 opacity-50"
+                      : "text-gray-400 opacity-100"
+                }`}
               >
                 {nomePasso}
               </span>
