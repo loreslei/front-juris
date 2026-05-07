@@ -145,9 +145,9 @@ export default function Processual() {
           }
           ${
             passoAtual === 2
-              ? "+ 1.5vw"
+              ? "+ 2vw"
               : passoAtual === 5
-              ? "- 1.5vw"
+              ? "- 2vw"
               : "+ 0vw"
           }
         )`
