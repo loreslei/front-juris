@@ -24,13 +24,13 @@ export default function Processual() {
   const textoBotao = isLastStep ? "Concluir" : "Próximo";
 
   const avancarPasso = () => {
-  if (passoAtual < passos.length) {
-    const novoPasso = passoAtual + 1;
+    if (passoAtual < passos.length) {
+      const novoPasso = passoAtual + 1;
 
-    setPassoAtual(novoPasso);
-    setMobileStepView(novoPasso);
-  }
-};
+      setPassoAtual(novoPasso);
+      setMobileStepView(novoPasso);
+    }
+  };
 
   const recuarPasso = () => {
     if (passoAtual > 1) {
@@ -61,10 +61,9 @@ export default function Processual() {
   return (
     <div className="max-w-90/100 lg:max-w-5/6 mx-auto px-12 py-8 m-5 rounded-xl bg-slate-100 text-gray-700 font-sans">
       <p className="mb-8 text-sm">
-        Preencha os dados abaixo e clique no botão Confirmar. Os campos marcados
-        com * são obrigatórios.
+        Preencha os dados abaixo e clique no botão Próximo ou Salvar. Os campos
+        marcados com * são obrigatórios.
       </p>
-
 
       {/* MOBILE */}
       <div className="flex md:hidden items-center justify-center gap-4 mb-8">
@@ -130,49 +129,69 @@ export default function Processual() {
       </div>
 
       {/* TABLET/DESKTOP */}
-      <div className="hidden md:flex justify-between items-center mb-8 relative">
-        {/* Linha cinza de fundo */}
-        <div className="absolute top-6 left-0 w-full h-1 bg-gray-200 -z-20"></div>
+      <div className="hidden md:flex items-start mb-8 relative w-full">
+        {/* Linha cinza */}
+        <div className="absolute top-6 left-6 right-6 h-0.75 bg-gray-200"></div>
 
-        {/* Linha teal de progresso */}
+        {/* Linha teal */}
         <div
-          className="absolute top-6 left-0 h-1 bg-teal-500 -z-10 transition-all duration-300"
+          className="absolute top-6 left-6 h-0.75 bg-teal-500 transition-all duration-300"
           style={{
-            width: `${((passoAtual - 1) / (passos.length - 1)) * 100}%`,
+             width:
+    typeof window !== "undefined" && window.innerWidth >= 1280
+      ? `calc(
+          (100% - 48px) * ${
+            (passoAtual - 1) / (passos.length - 1)
+          }
+          ${
+            passoAtual === 2
+              ? "+ 1.5vw"
+              : passoAtual === 5
+              ? "- 1.5vw"
+              : "+ 0vw"
+          }
+        )`
+      : `calc(
+          (100% - 48px) * ${
+            (passoAtual - 1) / (passos.length - 1)
+          }
+        )`,
           }}
-        ></div>
+        />
 
         {passos.map((nomePasso, index) => {
           const numeroPasso = index + 1;
+
           const ativo = passoAtual === numeroPasso;
           const concluido = passoAtual > numeroPasso;
 
           return (
             <div
               key={index}
-              className="flex flex-col items-center bg-slate-100 px-2 z-10"
+              className="flex-1 flex flex-col items-center relative z-10"
             >
               <div
-  className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-4 transition-all
-  ${
-    ativo
-      ? "border-teal-500 bg-teal-500 text-white opacity-100"
-      : concluido
-      ? "border-teal-500 bg-teal-500 text-white opacity-50"
-      : "border-gray-200 bg-white text-gray-400 opacity-100"
-  }`}
->
-  {numeroPasso}
-</div>
+                className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-4 transition-all shrink-0
+          ${
+            ativo
+              ? "border-teal-500 bg-teal-500 text-white opacity-100"
+              : concluido
+                ? "border-teal-300 bg-teal-300 text-white/70"
+                : "border-gray-200 bg-white text-gray-400 opacity-100"
+          }`}
+              >
+                {numeroPasso}
+              </div>
 
               <span
-                className={`mt-2 text-sm text-center transition-all ${
-                  ativo
-                    ? "text-teal-600 font-semibold opacity-100"
-                    : concluido
-                      ? "text-teal-500 opacity-50"
-                      : "text-gray-400 opacity-100"
-                }`}
+                className={`mt-3 text-sm text-center transition-all w-full max-w-[120px] min-h-[40px] flex items-start justify-center
+          ${
+            ativo
+              ? "text-teal-600 font-semibold opacity-100"
+              : concluido
+                ? "text-teal-500 opacity-50"
+                : "text-gray-400 opacity-100"
+          }`}
               >
                 {nomePasso}
               </span>
