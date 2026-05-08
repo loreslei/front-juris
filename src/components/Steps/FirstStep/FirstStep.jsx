@@ -1,57 +1,103 @@
-import React from "react";
+import React, { useState } from "react";
+
 import Dropdown from "../../ui/Dropdown";
 
+import comarcas from "@/utils/data";
+
 const FirstStep = () => {
+  const [unidade, setUnidade] = useState("");
+
+  const unidades_judiciais = comarcas.map(
+    ({ name }) => name
+  );
+
   return (
-    <div className="space-y-6 text-sm  text-justify">
+    <div className="space-y-6 text-sm text-justify">
       <h2 className="text-lg font-bold text-gray-800">
         Antes de começar, leia com atenção
       </h2>
 
       <div>
         <p>
-          Para dar entrada no seu pedido, você vai precisar{" "}
-          <strong>enviar</strong>:
+          Para dar entrada no seu pedido,
+          você vai precisar enviar:
         </p>
+
         <ul className="list-disc pl-6 mt-2 space-y-1">
-          <li>Documento oficial com foto (como RG ou CNH)</li>
+          <li>
+            Documento oficial com foto
+            (como RG ou CNH)
+          </li>
+
           <li>CPF</li>
-          <li>Comprovante de endereço atualizado, no seu nome</li>
-          <li>Outros documentos que ajudem a provar o que aconteceu</li>
+
+          <li>
+            Comprovante de endereço
+            atualizado, no seu nome
+          </li>
+
+          <li>
+            Outros documentos que ajudem
+            a provar o que aconteceu
+          </li>
         </ul>
       </div>
 
       <div>
         <p>
-          <strong>Formatos aceitos:</strong> PDF, JPG, JPEG ou PNG
+          <strong>Formatos aceitos:</strong>{" "}
+          PDF, JPG, JPEG ou PNG
         </p>
+
         <p>
-          <strong>Tamanho máximo:</strong> 10 MB por arquivo.
+          <strong>Tamanho máximo:</strong>{" "}
+          10 MB por arquivo.
         </p>
       </div>
 
       <div className="space-y-1">
         <p>
-          Depois de enviar, nossa equipe vai analisar as informações e entrar em
-          contato.
+          Depois de enviar, nossa equipe
+          vai analisar as informações e
+          entrar em contato.
         </p>
+
         <p>
-          <strong>Preencha</strong> todos os campos marcados com * (são
+          <strong>Preencha</strong> todos
+          os campos marcados com * (são
           obrigatórios).
         </p>
+
         <p>
-          Depois, <strong>clique em "Próximo"</strong> para seguir.
+          Depois, clique em "Próximo" para
+          seguir.
         </p>
+
         <p>
-          <strong>Quanto mais completas forem as suas informações</strong>, mais
-          rápido e preciso será o atendimento.
+          <strong>
+            Quanto mais completas forem as
+            suas informações
+          </strong>
+          , mais rápido e preciso será o
+          atendimento.
         </p>
-        <p>Se faltar algum dado importante, entraremos em contato.</p>
-        <p>O pedido só segue se todos os dados forem confirmados.</p>
+
+        <p>
+          Se faltar algum dado importante,
+          entraremos em contato.
+        </p>
+
+        <p>
+          O pedido só segue se todos os
+          dados forem confirmados.
+        </p>
       </div>
 
       <p>
-        Quer saber qual é o <strong>Juizado Especial mais próximo?</strong>{" "}
+        Quer saber qual é o{" "}
+        <strong>
+          Juizado Especial mais próximo?
+        </strong>{" "}
         <a
           href="https://sbje.tjce.jus.br/sbje-web/pages/localiza_juizado.jsf"
           className="text-blue-500 hover:underline"
@@ -61,7 +107,12 @@ const FirstStep = () => {
       </p>
 
       <div className="mt-8 max-w-3xl">
-        <Dropdown dropdown_text='uma Unidade Judicial'/>
+        <Dropdown
+          dropdown_text="uma Unidade Judicial"
+          options={unidades_judiciais}
+          value={unidade}
+          onChange={setUnidade}
+        />
       </div>
     </div>
   );

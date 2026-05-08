@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+
 import Input from "./Input";
 
-export default function Radio({ final }) {
-  const [selected, setSelected] = useState("");
+export default function Radio({
+  final,
 
+  value,
+  onChange,
+}) {
   const radio = `
     cursor-pointer
     shrink-0
@@ -35,26 +39,38 @@ export default function Radio({ final }) {
 
   const opcoes = [
     "Não",
+
     "Idoso (mais de 60 anos) - art. 71 do Estatuto do Idoso",
+
     "Idoso (mais de 80 anos)",
+
     "Portador de Necessidades Especiais",
+
     "Outros",
   ];
 
-  const declaracao = "Li e concordo com esta declaração";
+  const declaracao =
+    "Li e concordo com esta declaração";
 
-  const items = final ? [declaracao] : opcoes;
+  const items = final
+    ? [declaracao]
+    : opcoes;
 
   return (
     <div>
       {items.map((item, index) => (
-        <div key={index} className="flex items-center mb-4">
+        <div
+          key={index}
+          className="flex items-center mb-4"
+        >
           <input
             type="radio"
             name="prioridade"
             value={item}
-            checked={selected === item}
-            onChange={(e) => setSelected(e.target.value)}
+            checked={value === item}
+            onChange={(e) =>
+              onChange(e.target.value)
+            }
             className={radio}
           />
 
@@ -64,7 +80,7 @@ export default function Radio({ final }) {
         </div>
       ))}
 
-      {!final && selected === "Outros" && (
+      {!final && value === "Outros" && (
         <Input
           label_text="Outra prioridade legal"
           input_text="direito de prioridade"

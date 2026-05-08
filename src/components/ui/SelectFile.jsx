@@ -1,10 +1,9 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import { Upload, Trash2 } from "lucide-react";
 
-export default function SelectPicture({ label, maxFiles = 2 }) {
+export default function SelectPicture({ label, maxFiles = 2, files, setFiles, error}) {
   const inputRef = useRef(null);
-  const [files, setFiles] = useState([]);
 
   function handleSelectFiles(e) {
     if (files.length >= maxFiles) return;
@@ -32,7 +31,7 @@ export default function SelectPicture({ label, maxFiles = 2 }) {
       {files.map((file, index) => (
         <div key={index} className="gap-3 flex flex-col lg:flex-row justify-between items-center">
           
-          <span className="text-sm w-full break-all">{file.name}</span>
+          <span className="text-sm text-center lg:text-left w-full break-all">{file.name}</span>
 
           <button
             onClick={() => handleRemove(index)}
@@ -72,6 +71,14 @@ export default function SelectPicture({ label, maxFiles = 2 }) {
             </span>
           )}
       </div>
+    {
+  error && (
+    <p className="text-red-500 text-xs">
+      {error}
+    </p>
+  )
+}
     </div>
+    
   );
 }

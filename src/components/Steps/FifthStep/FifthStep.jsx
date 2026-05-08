@@ -1,4 +1,4 @@
-import SelectPicture from '@/components/ui/SelectPicture';
+import SelectPicture from '@/components/ui/SelectFile';
 import { Check } from 'lucide-react';
 import React from 'react'
 
