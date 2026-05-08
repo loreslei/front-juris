@@ -1,9 +1,15 @@
 import SelectPicture from '@/components/ui/SelectFile';
 import { Check } from 'lucide-react';
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function FifthStep() {
     const passos = ['Conversas, e-mails, prints de tela', 'Notas fiscais, contratos, boletos', 'Fotos ou comprovantes']
+    const [documentFiles, setDocumentFiles] = useState([]);
+    // if (documentFiles.length === 0) {
+    //   newErrors.documentos = "Envie pelo menos 1 documento";
+
+    //   valid = false;
+    // }
   return (
     <div className='flex flex-col gap-5  text-justify'>
         <ul className="text-sm list-disc pl-10">
@@ -21,7 +27,12 @@ export default function FifthStep() {
         </ul>
         </ul>
 
-        <SelectPicture />
+        <SelectPicture
+          maxFiles={5}
+          files={documentFiles}
+          setFiles={setDocumentFiles}
+          // error={errors.comprovante}
+        />
       
     </div>
   )

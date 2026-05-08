@@ -4,7 +4,7 @@ import FourthStep from "@/components/Steps/FourthStep/FourthStep";
 import SecondStepManager from "@/components/Steps/SecondStep/SecondStepManager";
 import SixthStep from "@/components/Steps/SixthStep/SixthStep";
 import ThirdStepManager from "@/components/Steps/ThirdStep/ThirdStepManager";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, DownloadCloud, SquarePen } from "lucide-react";
 import React, { useState } from "react";
 
 export default function Processual() {
@@ -59,7 +59,12 @@ export default function Processual() {
   };
 
   return (
-    <div className="max-w-90/100 lg:max-w-5/6 mx-auto px-12 py-8 m-5 rounded-xl bg-white border-2 border-slate-200 text-gray-700 font-sans">
+    <div className="max-w-90/100 my-10 text-slate-900 flex flex-col items-center justify-center md:my-0 md:h-screen lg:my-10 lg:h-auto lg:max-w-5/6 mx-auto">
+    <div className="flex gap-2 w-full p-4 border-2 border-slate-200 rounded-t-xl">
+      <SquarePen />
+      <p>Pré-Processual</p>
+    </div>  
+    <div className="w-full px-12 py-8 rounded-xl rounded-t-none bg-white border-x-2 border-b-2 border-slate-200 text-gray-700 font-sans">
       <p className="mb-8 text-sm">
         Preencha os dados abaixo e clique no botão Próximo ou Salvar. Os campos
         marcados com * são obrigatórios.
@@ -239,6 +244,7 @@ export default function Processual() {
           {textoBotao}
         </button>
       </div>
+    </div>
     </div>
   );
 }
