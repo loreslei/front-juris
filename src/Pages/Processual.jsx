@@ -201,9 +201,9 @@ export default function Processual() {
       </div>
 
       {/* Container do Conteúdo Dinâmico */}
-      <div className="bg-gray-50 w-[120%] -ml-[10%] md:ml-0 md:w-full rounded-lg shadow-sm">
+      <div className="flex justify-center flex-col items-center bg-gray-50 w-[120%] -ml-[10%] md:ml-0 md:w-full rounded-lg shadow-sm">
         {/* Cabeçalho da Seção */}
-        <div className="bg-teal-500 text-white p-3 font-semibold rounded-t-lg">
+        <div className="bg-teal-500 w-full text-white p-3 font-semibold rounded-t-lg">
           {passos[passoAtual - 1]}
         </div>
 
