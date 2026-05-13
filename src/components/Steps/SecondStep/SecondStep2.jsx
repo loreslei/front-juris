@@ -1,6 +1,6 @@
 import React from "react";
 
-import PersonForm from "@/components/ui/PersonForm";
+import PersonForm from "@/components/forms/PersonForm";
 
 export default function SecondStep2({
   onSave,
