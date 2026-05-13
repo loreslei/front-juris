@@ -29,7 +29,7 @@ export default function Intro() {
       </h1>
 
       <Link
-        className="relative text-lg md:text-2xl font-semibold px-8 py-3.5 bg-white rounded-xl z-10"
+        className="relative text-slate-900 text-lg md:text-2xl font-semibold px-8 py-3.5 bg-white rounded-xl z-10"
         to={"/processual/new"}
       >
         Agendar

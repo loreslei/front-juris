@@ -226,7 +226,7 @@ export default function Processual() {
         <button
           onClick={recuarPasso}
           disabled={passoAtual === 1}
-          className={`py-2 px-8 rounded font-medium transition-all
+          className={`py-2 px-8 rounded-lg font-medium transition-all
             ${
               passoAtual === 1
                 ? "bg-teal-500/40 text-white/60 cursor-not-allowed opacity-50"
@@ -239,7 +239,7 @@ export default function Processual() {
         <button
           onClick={avancarPasso}
           disabled={passoAtual === passos.length}
-          className={`py-2 px-8 rounded font-medium transition-all
+          className={`py-2 px-8 rounded-lg font-medium transition-all
             ${
               passoAtual === passos.length
                 ? "bg-teal-500/40 text-white/60 cursor-not-allowed opacity-50"

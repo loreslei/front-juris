@@ -15,7 +15,7 @@ export default function ThirdStep1({onNext}) {
 
       <button 
       onClick={onNext}
-      className='py-2 px-8 rounded font-medium transition-all bg-teal-500 text-white hover:bg-teal-600 cursor-pointer'>
+      className='py-2 px-8 rounded-lg font-medium transition-all bg-teal-500 text-white hover:bg-teal-600 cursor-pointer'>
         Adicionar meus dados 
       </button>
     </div>
