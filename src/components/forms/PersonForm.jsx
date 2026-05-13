@@ -28,6 +28,9 @@ export default function PersonForm({
   showPriority = false,
   showUploads = false,
 
+  telOptional = false,
+  emailOptional = false,
+
   onSubmit,
 }) {
   const header =
@@ -488,7 +491,7 @@ export default function PersonForm({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
           <Input
-            optional
+            optional={telOptional}
             name="telefone"
             value={formData.telefone}
             onChange={handleChange}
@@ -498,7 +501,7 @@ export default function PersonForm({
           />
 
           <Input
-            optional
+            optional={emailOptional}
             name="email"
             value={formData.email}
             onChange={handleChange}

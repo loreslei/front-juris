@@ -4,7 +4,6 @@ import SecondStep2 from './SecondStep2';
 import SecondSetp3 from './SecondSetp3';
 
 export default function SecondStepManager() {
-  // O estado inicial é a tela 1
   const [currentStep, setCurrentStep] = useState(1);
 
   return (

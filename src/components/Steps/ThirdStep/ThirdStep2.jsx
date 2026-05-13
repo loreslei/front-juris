@@ -10,6 +10,8 @@ export default function ThirdStep2({
       title="Reclamado(a)"
       showPriority={false}
       showUploads={false}
+      telOptional = {true}
+      emailOptional = {true}
       onSubmit={onSave}
     />
   );
