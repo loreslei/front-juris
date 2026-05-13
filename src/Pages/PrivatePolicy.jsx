@@ -233,7 +233,7 @@ export default function PrivatePolicy() {
           </section>
 
           <div className="w-full flex justify-center">
-          <Link className="py-2 px-8 rounded font-medium transition-all bg-teal-500 text-white hover:bg-teal-600 cursor-pointer" to={-1}>
+          <Link className="py-2 px-8 rounded-lg font-medium transition-all bg-teal-500 text-white hover:bg-teal-600 cursor-pointer" to={-1}>
           Retornar
           </Link>
           </div>
