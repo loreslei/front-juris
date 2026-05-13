@@ -7,6 +7,12 @@ export default function Radio({
 
   value,
   onChange,
+
+  otherValue,
+  setOtherValue,
+
+  error,
+  otherError,
 }) {
   const radio = `
     cursor-pointer
@@ -49,34 +55,24 @@ export default function Radio({
     "Outros",
   ];
 
-  const declaracao =
-    "Li e concordo com esta declaração";
+  const declaracao = "Li e concordo com esta declaração";
 
-  const items = final
-    ? [declaracao]
-    : opcoes;
+  const items = final ? [declaracao] : opcoes;
 
   return (
     <div>
       {items.map((item, index) => (
-        <div
-          key={index}
-          className="flex items-center mb-4"
-        >
+        <div key={index} className="flex items-center mb-4">
           <input
             type="radio"
             name="prioridade"
             value={item}
             checked={value === item}
-            onChange={(e) =>
-              onChange(e.target.value)
-            }
+            onChange={(e) => onChange(e.target.value)}
             className={radio}
           />
 
-          <label className="select-none ms-2 text-sm">
-            {item}
-          </label>
+          <label className="select-none ms-2 text-sm">{item}</label>
         </div>
       ))}
 
@@ -85,8 +81,13 @@ export default function Radio({
           label_text="Outra prioridade legal"
           input_text="direito de prioridade"
           className="mt-2"
+          value={otherValue}
+          onChange={(e) => setOtherValue(e.target.value)}
+          name="otherPriority"
+          error={otherError}
         />
       )}
+      {error && <p className="text-red-500 text-xs">{error}</p>}
     </div>
   );
 }
