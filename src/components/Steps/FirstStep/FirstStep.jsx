@@ -20,7 +20,7 @@ const FirstStep = () => {
       <div>
         <p>
           Para dar entrada no seu pedido,
-          você vai precisar enviar:
+          você vai precisar <strong>enviar:</strong>
         </p>
 
         <ul className="list-disc pl-6 mt-2 space-y-1">
@@ -45,12 +45,12 @@ const FirstStep = () => {
 
       <div>
         <p>
-          <strong>Formatos aceitos:</strong>{" "}
+          <strong>Formatos aceitos: </strong>
           PDF, JPG, JPEG ou PNG
         </p>
 
         <p>
-          <strong>Tamanho máximo:</strong>{" "}
+          <strong>Tamanho máximo: </strong>
           10 MB por arquivo.
         </p>
       </div>
@@ -64,12 +64,12 @@ const FirstStep = () => {
 
         <p>
           <strong>Preencha</strong> todos
-          os campos marcados com * (são
+          os campos marcados com <strong>*</strong> (são
           obrigatórios).
         </p>
 
         <p>
-          Depois, clique em "Próximo" para
+          Depois, <strong>clique em "Próximo"</strong> para
           seguir.
         </p>
 

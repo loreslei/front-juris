@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SecondStep1({onNext}) {
   return (
-    <div className='space-y-5'>
+    <div className='flex flex-col space-y-5'>
       <h1 className='text-lg font-semibold'>
         Quem está fazendo o pedido?
       </h1>
@@ -15,7 +15,7 @@ export default function SecondStep1({onNext}) {
 
       <button 
       onClick={onNext}
-      className='py-2 px-8 rounded-lg font-medium transition-all bg-teal-500 text-white hover:bg-teal-600 cursor-pointer'>
+      className='md:self-start py-2 px-8 rounded-lg font-medium transition-all bg-teal-500 text-white hover:bg-teal-600 cursor-pointer'>
         Adicionar meus dados 
       </button>
     </div>

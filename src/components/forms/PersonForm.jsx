@@ -508,12 +508,12 @@ export default function PersonForm({
 
         </div>
 
-          <p className="mt-3 font-semibold text-sm"> * Você tem algum direito de prioridade para que seu pedido seja analisado mais rápido? </p> 
-          <p className="text-xs block"> (Ex.: pessoas com mais de 60 anos, doenças graves, pessoas com deficiência) </p>
-        
+          
 
         {showPriority && (
           <>
+          <p className="mt-3 font-semibold text-sm"> * Você tem algum direito de prioridade para que seu pedido seja analisado mais rápido? </p> 
+          <p className="text-xs block"> (Ex.: pessoas com mais de 60 anos, doenças graves, pessoas com deficiência) </p>
             <Radio
               value={priority}
               onChange={setPriority}
