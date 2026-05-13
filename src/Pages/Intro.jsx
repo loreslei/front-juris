@@ -18,7 +18,7 @@ export default function Intro() {
       <div>
 
       </div>
-      <div className="absolute top-15 md:top-5 md:left-5 bg-white rounded-xl py-3 px-5">
+      <div className="absolute top-15 md:top-5 md:left-5 bg-white shadow-sm rounded-xl py-2.5 px-5">
         <img  className="w-40" src="/image.png" alt="" />
       </div>
       <h1 className="relative z-10 text-3xl md:text-6xl flex flex-col gap-y-4.5 text-center font-semibold text-white">
