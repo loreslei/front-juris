@@ -24,7 +24,7 @@ export default function SecondStep3({ onAddMore }) {
         onClick={onAddMore}
         className="cursor-pointer flex self-center md:self-end items-center transition-all duration-300 text-white rounded-lg bg-blue-500 hover:bg-blue-600 px-8 md:px-4 py-2 gap-2 mt-4"
       >
-        Adicionar Mais Reclamantes
+        Adicionar Reclamante
       </button>
     </div>
   );

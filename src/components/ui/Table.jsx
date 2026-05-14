@@ -10,7 +10,13 @@ import {
   Trash2,
 } from "lucide-react";
 
-const ROWS_PER_PAGE = 4;
+import{
+  cpfCnpjMask,
+  phoneMask
+} from "@/utils/masks"
+
+
+const ROWS_PER_PAGE = 3;
 
 export default function Table({
   data = [],
@@ -29,13 +35,19 @@ export default function Table({
       id: pessoa.id || pessoa.temp_id || index,
 
       nome:
-        pessoa.nome_completo || "-",
+        pessoa.nome_completo,
 
       cpfCnpj:
-        pessoa.cpf_cnpj || "-",
+      pessoa.cpf_cnpj
+        ? cpfCnpjMask(pessoa.cpf_cnpj)
+        : "-",
 
       telefone:
-        pessoa.telefones?.[0]?.numero || "-",
+      pessoa.telefones?.[0]?.numero
+        ? phoneMask(
+            pessoa.telefones[0].numero
+          )
+        : "-",
 
       email:
         pessoa.email || "-",
@@ -66,9 +78,9 @@ export default function Table({
     : rows;
 
   return (
-    <div className="flex flex-col items-center justify-center mb-8 w-full">
+    <div className="flex flex-col items-center justify-center w-full">
 
-      <div className="overflow-x-auto w-full pt-5 px-4 mb-8 mx-auto">
+      <div className="overflow-x-auto w-full px-5 py-5 mx-auto">
 
         <table className="w-full bg-white shadow-md rounded-xl overflow-hidden">
 
@@ -109,7 +121,7 @@ export default function Table({
                   className="border-b border-gray-200"
                 >
 
-                  <td className="py-3 px-4 text-center">
+                  <td className="py-3 capitalize px-4 text-center">
                     {row.nome}
                   </td>
 
@@ -121,11 +133,11 @@ export default function Table({
                     {row.telefone}
                   </td>
 
-                  <td className="py-3 px-4 text-center">
+                  <td className="py-3 lowercase px-4 text-center">
                     {row.email}
                   </td>
 
-                  <td className="py-3 px-4 text-center flex items-center justify-center gap-3">
+                  <td className="py-3 px-4 text-center align-middle gap-3">
                     {onDelete && (
                       <button
                         onClick={() =>
