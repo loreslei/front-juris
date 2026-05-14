@@ -1,12 +1,23 @@
-import SecondSetp3 from '@/components/Steps/SecondStep/SecondSetp3';
-import ThirdStep3 from '@/components/Steps/ThirdStep/ThirdStep3';
-import React from 'react'
+import SecondStep3 from "@/components/Steps/SecondStep/SecondStep3";
+import ThirdStep3 from "@/components/Steps/ThirdStep/ThirdStep3";
+
+import React from "react";
 
 export default function Test() {
+
+  function handleAddMore() {
+    console.log("Adicionar");
+  }
+
   return (
-    <div>
+    <div className="flex flex-col gap-10">
+
       <ThirdStep3 />
-      <SecondSetp3 />
+
+      <SecondStep3
+        onAddMore={handleAddMore}
+      />
+
     </div>
-  )
+  );
 }

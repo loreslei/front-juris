@@ -11,7 +11,7 @@ export default function SecondStep1({onNext}) {
         Nesta etapa, você vai informar seus próprios dados.
       </p>
 
-      <p className='text-sm'>*A pessoa que faz o pedido é chamada de <p className='font-semibold inline'>Reclamante</p>, ou seja, quem entra com a ação.</p>
+      <p className='text-sm'>*A pessoa que faz o pedido é chamada de <span className='font-semibold inline'>Reclamante</span>, ou seja, quem entra com a ação.</p>
 
       <button 
       onClick={onNext}

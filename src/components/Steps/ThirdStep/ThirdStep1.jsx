@@ -11,7 +11,7 @@ export default function ThirdStep1({onNext}) {
         Nesta etapa, você vai informar os dados da pessoa ou da empresa reclamada.
       </p>
 
-      <p className='text-sm'>*A pessoa ou a empresa contra quem o pedido é feito é chamada de <p className='font-semibold inline'>Reclamada</p>, ou seja, quem responde à ação.</p>
+      <p className='text-sm'>*A pessoa ou a empresa contra quem o pedido é feito é chamada de <span className='font-semibold inline'>Reclamada</span>, ou seja, quem responde à ação.</p>
 
       <button 
       onClick={onNext}

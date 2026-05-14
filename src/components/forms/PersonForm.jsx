@@ -31,6 +31,7 @@ export default function PersonForm({
   telOptional = false,
   emailOptional = false,
 
+  initialData = null,
   onSubmit,
 }) {
   const header =
@@ -47,10 +48,10 @@ export default function PersonForm({
   const [cidades, setCidades] = useState([]);
 
   const [priority, setPriority] =
-    useState("");
+    useState(initialData?.prioridade || "");
 
   const [otherPriority, setOtherPriority] =
-    useState("");
+    useState(initialData?.descricao_prioridade || "");
 
   const [documentFiles, setDocumentFiles] =
     useState([]);
@@ -63,19 +64,19 @@ export default function PersonForm({
   // =========================
 
   const [formData, setFormData] = useState({
-    nome: "",
-    documento: "",
+    nome: initialData?.nome_completo || "",
+    documento: initialData?.cpf_cnpj || "",
 
-    cep: "",
-    logradouro: "",
-    numero: "",
-    complemento: "",
-    bairro: "",
-    cidade: "",
-    estado: "",
+    cep: initialData?.endereco?.cep || "",
+    logradouro: initialData?.endereco?.logradouro || "",
+    numero: initialData?.endereco?.numero_residencia || "",
+    complemento: initialData?.endereco?.complemento || "",
+    bairro: initialData?.endereco?.bairro || "",
+    cidade: initialData?.endereco?.municipio || "",
+    estado: initialData?.endereco?.estado || "",
 
-    telefone: "",
-    email: "",
+    telefone: initialData?.telefones?.[0]?.numero || "",
+    email: initialData?.email || "",
   });
 
   // =========================
@@ -294,14 +295,16 @@ export default function PersonForm({
     // =========================
 
     if (showUploads) {
-      if (documentFiles.length === 0) {
+      const hasOldDocs = initialData?.documentos?.some(d => d.tipo === "PESSOAL");
+      if (documentFiles.length === 0 && !hasOldDocs) {
         newErrors.documentos =
           "Envie pelo menos 1 documento";
 
         valid = false;
       }
 
-      if (addressFiles.length === 0) {
+      const hasOldAddress = initialData?.documentos?.some(d => d.tipo === "RESIDENCIA");
+      if (addressFiles.length === 0 && !hasOldAddress) {
         newErrors.comprovante =
           "Envie pelo menos 1 comprovante";
 
@@ -319,20 +322,28 @@ export default function PersonForm({
   // =========================
 
   function handleSubmit() {
-    const valid = validateForm();
 
-    if (!valid) return;
+  console.log("clicou");
 
-    onSubmit({
-      ...formData,
+  const valid = validateForm();
 
-      prioridade: priority,
-      outraPrioridade: otherPriority,
+  console.log(valid);
 
-      documentos: documentFiles,
-      comprovantes: addressFiles,
-    });
-  }
+  if (!valid) return;
+
+  console.log("vai enviar");
+
+  onSubmit({
+    ...formData,
+
+    prioridade: priority,
+    outraPrioridade: otherPriority,
+
+    documentos: documentFiles,
+    comprovantes: addressFiles,
+    oldDocumentos: initialData?.documentos || [],
+  });
+}
 
   return (
     <div className="flex text-justify flex-col gap-10">

@@ -1,10 +1,11 @@
 import Radio from "@/components/ui/Radio";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useProcessoContext } from "@/context/ProcessoContext";
 
-export default function SixthStep() {
+export default function SixthStep({ onPrev }) {
+  const { formData, updateFormData } = useProcessoContext();
 
-  
   return (
     <div className="flex flex-col gap-8 text-justify">
       <section className="flex flex-col gap-5">
@@ -43,9 +44,14 @@ export default function SixthStep() {
           botão abaixo, você declara estar ciente e de acordo com os termos
           apresentados acima.</p>
 
-        <Radio final />
+        <Radio 
+          final 
+          value={formData.aceitou_termos ? "Li e concordo com esta declaração" : ""}
+          onChange={(val) => updateFormData('aceitou_termos', val === "Li e concordo com esta declaração")}
+        />
           
       </section>
+
     </div>
   );
 }

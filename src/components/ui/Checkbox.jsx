@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "./Input";
 import InputArea from "./InputArea";
 
-export default function Checkbox() {
+export default function Checkbox({ onChange }) {
   const [selected, setSelected] = useState([]);
+  const [outrosText, setOutrosText] = useState("");
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(selected, outrosText);
+    }
+  }, [selected, outrosText]);
+
   const handleChange = (value) => {
-  setSelected((prev) =>
-    prev.includes(value)
-      ? prev.filter((item) => item !== value) // remove
-      : [...prev, value] // adiciona
-  );
-};
+    setSelected((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value) // remove
+        : [...prev, value] // adiciona
+    );
+  };
+  
   const checkbox = `
 shrink-0
 appearance-none
@@ -40,7 +49,7 @@ focus-visible:ring-offset-2
 
 transition-all
 cursor-pointer
-`
+`;
 
   const opcoes = [
     "Manter ou restabelecer serviço essencial",
@@ -51,9 +60,9 @@ cursor-pointer
 
   return (
     <div>
-      {opcoes.map((opt_name) => {
+      {opcoes.map((opt_name, index) => {
         return (
-          <div className="flex items-center mb-4">
+          <div key={index} className="flex items-center mb-4">
             <input
               type="checkbox"
               name="opcoes"
@@ -72,6 +81,8 @@ cursor-pointer
           label_text="Outros pedidos? Descreva"
           input_text="o(s) pedido(s)"
           className="mt-2"
+          value={outrosText}
+          onChange={(e) => setOutrosText(e.target.value)}
         />
       )}
     </div>

@@ -1,15 +1,33 @@
 import SelectPicture from '@/components/ui/SelectFile';
 import { Check } from 'lucide-react';
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react';
+import { useProcessoContext } from '@/context/ProcessoContext';
+import { fileToBase64 } from '@/utils/fileToBase64';
 
 export default function FifthStep() {
-    const passos = ['Conversas, e-mails, prints de tela', 'Notas fiscais, contratos, boletos', 'Fotos ou comprovantes']
-    const [documentFiles, setDocumentFiles] = useState([]);
-    // if (documentFiles.length === 0) {
-    //   newErrors.documentos = "Envie pelo menos 1 documento";
+    const passos = ['Conversas, e-mails, prints de tela', 'Notas fiscais, contratos, boletos', 'Fotos ou comprovantes'];
+    const { formData, updateFormData } = useProcessoContext();
+    const [documentFiles, setDocumentFiles] = useState(formData.rawAnexosExtras || []);
 
-    //   valid = false;
-    // }
+    useEffect(() => {
+      const convertFiles = async () => {
+        updateFormData('rawAnexosExtras', documentFiles);
+        if (documentFiles.length > 0) {
+          const base64Files = await Promise.all(
+            documentFiles.map(async (file) => ({
+              tipo: "EXTRA",
+              arquivo: await fileToBase64(file),
+            }))
+          );
+          updateFormData('anexos_extras', base64Files);
+        } else {
+          updateFormData('anexos_extras', []);
+        }
+      };
+
+      convertFiles();
+    }, [documentFiles]);
+
   return (
     <div className='flex flex-col gap-5  text-justify'>
         <ul className="text-sm list-disc pl-10">
@@ -19,11 +37,9 @@ export default function FifthStep() {
           <li>Envie documentos que ajudem a provar o que aconteceu, como:
           </li>
         <ul className='pl-6'>
-            {passos.map((list_item => {
-                return <p className='flex items-center gap-2'><Check className='text-teal-600'size={18}/> <li>{list_item}</li> </p>
-            }))}
-            
-            
+            {passos.map((list_item, index) => {
+                return <p key={index} className='flex items-center gap-2'><Check className='text-teal-600'size={18}/> <li>{list_item}</li> </p>
+            })}
         </ul>
         </ul>
 
@@ -31,7 +47,6 @@ export default function FifthStep() {
           maxFiles={5}
           files={documentFiles}
           setFiles={setDocumentFiles}
-          // error={errors.comprovante}
         />
       
     </div>
